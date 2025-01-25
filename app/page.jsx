@@ -3,6 +3,8 @@ import Header from "./components/header";
 import TextCarousel from "./components/carousel";
 import MultipleItems from "./components/MultipleItems";
 import Actu from "./components/actu";
+import Adresse from "./components/adresse";
+import Footer from "./components/footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -82,9 +84,11 @@ export default function Home() {
           <div className="pr-10">
           <MultipleItems />
           <Actu />
+          <Adresse />
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
