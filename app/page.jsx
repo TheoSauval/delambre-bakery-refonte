@@ -1,85 +1,141 @@
 import React from "react";
 import Header from "./components/header";
-import TextCarousel from "./components/carousel";
+import HeroBackground from "./components/heroBackground";
+import HeroScrollSection from "./components/heroScrollSection";
+import ScrollingBanner from "./components/scrollingBanner";
+import RevealHeading from "./components/revealHeading";
+import CookieCard from "./components/cookieCard";
 import MultipleItems from "./components/MultipleItems";
 import Actu from "./components/actu";
+import InstagramFeed from "./components/instagramFeed";
 import Adresse from "./components/adresse";
-import Footer from "./components/footer";
+import Contact from "./components/contact";
+import FooterReveal from "./components/footerReveal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
   return (
-    <div className="custom-font">
-      <Header />
-      <h1 className="flex flex-col justify-around items-center text-8xl text-blanccasse font-bold custom-font text-center animate-fadeIn">
-        <span className="text-4xl">The</span>Delambre- <br /> Bakery
-      </h1>
-      <h3 className="flex justify-around items-center text-4xl text-blanccasse font-bold custom-font text-center animate-fadeIn">
-        New York <br />
-        Style <br />
-        COOKIES
-      </h3>
-      <div className="flex justify-around items-end absolute -bottom-2 bg-foreground w-full size-36"></div>
-      <div className="flex justify-around items-end absolute bottom-20 w-full size-40">
-        <img
-          src="/img/cookie-praline.png"
-          alt="Cookie praliné"
-          className="size-72"
+    <div className="custom-font pointer-events-none">
+      <FooterReveal>
+      <HeroScrollSection className="relative h-screen w-full overflow-hidden">
+        <HeroBackground
+          src="/img/cookies-new-yorkais-faits-maison-lille-59_1.webp"
+          alt="Cookies New York Style faits maison à Lille"
+          className="absolute inset-0 w-full h-full object-cover brightness-50"
         />
-        <img
-          src="/img/cookie-orignal.png"
-          alt="Cookie orignal"
-          className="size-72"
-        />
-        <img
-          src="/img/cookie-original.png"
-          alt="Cookie original"
-          className="size-72"
-        />
-      </div>
-      <main className="mt-96 bg-blanccasse"> {/* Ajout d'une marge pour placer en dessous */}
-        <div>
-          <TextCarousel />
+
+        <Header className="absolute top-0 left-0 w-full z-20" />
+
+        <div className="absolute bottom-16 left-6 md:left-16 z-10">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-blanccasse leading-[0.85]">
+            THE<br />DELAMBRE<br />BAKERY
+          </h1>
+          <p className="mt-4 text-xl md:text-2xl text-blanccasse font-bold">
+            New York Style Cookies
+          </p>
         </div>
-        <div className="flex justify-around items-center mt-40">
+
+        <div className="group absolute bottom-16 right-6 md:right-16 z-10 size-32 md:size-44 cursor-pointer">
+          <svg width="0" height="0" className="absolute pointer-events-none">
+            <defs>
+              <clipPath id="cookieBite" clipPathUnits="objectBoundingBox">
+                <path
+                  fillRule="evenodd"
+                  d="M1,0.5 A0.5,0.5 0 1,0 0,0.5 A0.5,0.5 0 1,0 1,0.5 Z
+                     M1.02,0.16 A0.16,0.16 0 1,0 0.7,0.16 A0.16,0.16 0 1,0 1.02,0.16 Z"
+                />
+              </clipPath>
+            </defs>
+          </svg>
           <img
-            src="/img/createur.jpg"
-            alt=""
-            className="rounded-3xl"
+            src="/img/cookie_accueil.webp"
+            alt="Cookie The Delambre Bakery"
+            style={{ clipPath: "url(#cookieBite)" }}
+            className="size-full object-cover -rotate-12 shadow-lg transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-0"
           />
-          <div className="w-1/2">
+          <span className="pointer-events-none absolute top-1 right-1 size-4 rounded-full bg-rougecerise opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:-translate-y-6 group-hover:translate-x-6 group-hover:rotate-45" />
+          <span className="pointer-events-none absolute top-0 right-8 size-3 rounded-full bg-rougecerise opacity-0 transition-all duration-500 ease-out delay-100 group-hover:opacity-100 group-hover:-translate-y-8 group-hover:translate-x-3 group-hover:rotate-12" />
+          <span className="pointer-events-none absolute top-6 right-0 size-3.5 rounded-full bg-rougecerise opacity-0 transition-all duration-500 ease-out delay-150 group-hover:opacity-100 group-hover:-translate-y-3 group-hover:translate-x-9 group-hover:-rotate-12" />
+        </div>
+      </HeroScrollSection>
+      <main className="bg-blanccasse">
+        <div className="group relative flex justify-around items-center pt-24">
+          <img
+            src="/img/Lille.jpg"
+            alt="Cinthia et Benjamin, fondateurs de The Delambre Bakery"
+            className="w-[36rem] h-auto object-contain"
+          />
+          <div className="w-1/3">
             <h3 className="text-2xl text-rougecerise">The Delambre Bakery</h3>
-            <p>Homemade New York Style Cookies <br />
-              <br />
-              Vous faire voyager à New York en une seule bouchée, c’est ce que <span className="text-rougecerise">The Delambre Bakery</span> a décidé de faire en ouvrant sa première boutique à Lille en 2021. Le cookie shop propose à la vente des cookies new-yorkais désormais célèbres et ultras gourmands : moelleux à l’intérieur et croustillant à l’extérieur, voilà la recette du bonheur !
-              <br />
-              <br />
-              Il aura suffi d’un coup de foudre à Manhattan dans le quartier de Times Square et d’un confinement quelques années plus tard pour que Cinthia et Benjamin décident de se lancer dans cette incroyable et délicieuse aventure ! Si les savoureux cookies ont commencé à voir le jour dans l’appartement du jeune couple, ils sont vite passés à la vitesse supérieure. The Delambre Bakery ouvre sa première boutique en septembre 2021 à Lille puis deux ans plus tard à Paris.
+            <p className="text-lg">
+              Homemade New York Style Cookies
               <br />
               <br />
-              Au menu, 8 cookies signatures aux saveurs gourmandes et inspirés des USA : Red Velvet, Chocolate Tuxedo ou encore Salted Caramel, mais aussi des cookies éphémères tout au long de l’année avec des ingrédients uniques et originaux qui ne manqueront pas de vous surprendre !
+              Vous faire voyager à New York en une seule bouchée, c’est ce que <span className="text-rougecerise">The Delambre Bakery</span> a décidé de faire en ouvrant sa première boutique à Lille en 2021, puis à Paris deux ans plus tard.
               <br />
               <br />
-              <span className="text-rougecerise">Mais c'est quoi un cookie de chez The Delambre Bakery ?</span>
-              <br />
-              <br />
-              Un cookie The Delambre Bakery, c’est d’abord des ingrédients de qualité supérieure : œufs de poule élevés en plein air, grand chocolatier belge et beurre de campagne sont les ingrédients phares. Chaque cookie est ensuite fait à la main, sans moule, pour un résultat généreux, authentique et gourmand qui ravira toutes les papilles. De fabuleux cookies…Toujours home-made !
-              <br />
-              <br />
-              The Delambre Bakery vous accueille :
-              <br />
-              <br />
-              À Lille, 3 rue Batholomé Masurel du mardi au samedi de 13h à 19h. <br />
-              À Paris, 62 rue de la Chaussée-d’Antin, du mardi au samedi de 12h à 19h.</p>
-            <div className="flex justify-around items-center mt-4">
-              <button className="border text-rougecerise border-rougecerise hover:bg-rougecerise hover:text-blanccasse transition ease-linear py-2 px-4 rounded-3xl">Contact</button>
-            </div>
+              <span className="text-rougecerise">Mais c'est quoi un cookie de chez The Delambre Bakery ?</span> Des ingrédients de qualité supérieure, une fabrication 100&nbsp;% à la main, sans moule : de fabuleux cookies... toujours home-made !
+            </p>
           </div>
+
+          <img
+            src="/img/cookie-daim.png"
+            alt=""
+            className="pointer-events-none absolute -top-6 left-4 w-16 md:w-20 opacity-0 scale-50 -rotate-12 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
+          <img
+            src="/img/cookie-praline.png"
+            alt=""
+            className="pointer-events-none absolute -top-10 left-1/4 w-14 md:w-16 opacity-0 scale-50 rotate-12 transition-all duration-500 ease-out delay-100 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
+          <img
+            src="/img/Speculoos.png"
+            alt=""
+            className="pointer-events-none absolute -bottom-6 left-8 w-16 md:w-20 opacity-0 scale-50 rotate-6 transition-all duration-500 ease-out delay-150 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
+          <img
+            src="/img/Nutella-explosion.png"
+            alt=""
+            className="pointer-events-none absolute -top-6 right-6 w-16 md:w-20 opacity-0 scale-50 rotate-12 transition-all duration-500 ease-out delay-200 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
+          <img
+            src="/img/cookie-New-Yorker.png"
+            alt=""
+            className="pointer-events-none absolute bottom-4 right-2 w-16 md:w-20 opacity-0 scale-50 -rotate-6 transition-all duration-500 ease-out delay-250 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
+          <img
+            src="/img/cookie-orignal.png"
+            alt=""
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 md:w-20 opacity-0 scale-50 rotate-6 transition-all duration-500 ease-out delay-200 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
+          <img
+            src="/img/Canadian-Maple.png"
+            alt=""
+            className="pointer-events-none absolute top-1/3 right-4 w-14 md:w-16 opacity-0 scale-50 rotate-6 transition-all duration-500 ease-out delay-300 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0"
+          />
         </div>
         {/* Order */}
 
-        <div className="mt-28 pl-20">
+        <div className="mt-8">
+          <ScrollingBanner text="NEW YORK COOKIES">
+            <CookieCard src="/img/cookie-original.png" alt="Cookie Original" name="Original" />
+            <CookieCard src="/img/Chocolate-Tuxedo.png" alt="Cookie Chocolate Tuxedo" name="Chocolate Tuxedo" />
+            <CookieCard src="/img/REd-Velvet.png" alt="Cookie Red Velvet" name="Red Velvet" />
+          </ScrollingBanner>
+        </div>
+
+        <RevealHeading
+          className="mt-40 px-6 text-center text-4xl md:text-6xl font-bold uppercase leading-tight"
+          segments={[
+            { text: "Le goût de New York, " },
+            { text: "dans chaque bouchée.", className: "text-rougecerise" },
+          ]}
+        />
+
+        <InstagramFeed />
+
+        <div className="mt-40 pl-20">
           <h2 className="text-4xl text-rougecerise">Nos Cookies</h2>
           <div className="pr-10">
           <MultipleItems />
@@ -87,8 +143,12 @@ export default function Home() {
           <Adresse />
           </div>
         </div>
+
+        <div className="mt-40 pb-40">
+          <Contact />
+        </div>
       </main>
-      <Footer />
+      </FooterReveal>
     </div>
   );
 }

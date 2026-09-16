@@ -17,6 +17,8 @@ export default {
       animation: {
         fadeIn: 'fadeIn 2.5s ease-in-out',
         slide: "slide 10s linear infinite",
+        curtainUp: 'curtainUp 1s cubic-bezier(0.65,0,0.35,1) 1.4s forwards',
+        timerFill: 'timerFill 1.4s ease-in-out forwards',
       },
       keyframes: {
         fadeIn: {
@@ -26,6 +28,19 @@ export default {
         slide: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
+        },
+        curtainUp: {
+          '0%': { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
+        timerFill: {
+          '0%': { transform: 'scaleX(0)' },
+
+
+          '60%': { transform: 'scaleX(0.63)' },
+          '78%': { transform: 'scaleX(0.68)' },
+          '92%': { transform: 'scaleX(0.9)' },
+          '100%': { transform: 'scaleX(1)' },
         },
       },
     },

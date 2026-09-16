@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #D9A066;
+  --foreground: #4E342E;
+  --blanccasse: #FAF3E0;
+  --rougecerise: #D84315;
 }
 
 @font-face {
@@ -14,17 +16,35 @@
   font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #D9A066;
-    --foreground: #4E342E;
-    --blanccasse: #FAF3E0;
-    --rougecerise: #D84315;
-  }
-}
-
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--blanccasse);
   font-family: 'SaoTorpes', sans-serif;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 65s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 65s linear infinite reverse;
+}
+
+.text-outline-rougecerise {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--rougecerise);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
