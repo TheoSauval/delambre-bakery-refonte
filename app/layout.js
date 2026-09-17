@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "The Delambre Bakery - New York Style Cookies",
   description: "Cookies new-yorkais home-made à Lille et Paris. Moelleux à l'intérieur, croustillant à l'extérieur.",
+  // Preview de refonte, pas le site officiel : à retirer si ce domaine devient la prod.
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({ children }) {
