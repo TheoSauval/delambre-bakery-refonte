@@ -36,7 +36,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="group absolute bottom-16 right-6 md:right-16 z-10 size-32 md:size-44 cursor-pointer">
+        <div className="group absolute right-4 top-28 sm:top-32 md:top-auto md:bottom-16 md:right-16 z-10 size-20 sm:size-28 md:size-44 cursor-pointer">
           <svg width="0" height="0" className="absolute pointer-events-none">
             <defs>
               <clipPath id="cookieBite" clipPathUnits="objectBoundingBox">
