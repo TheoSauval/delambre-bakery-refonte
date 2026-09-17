@@ -20,11 +20,14 @@ const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];
 
 const Header = ({ className = '' }) => {
     const [open, setOpen] = useState(false);
+    const [closing, setClosing] = useState(false);
 
     useEffect(() => {
         document.body.style.overflow = open ? 'hidden' : '';
         return () => { document.body.style.overflow = ''; };
     }, [open]);
+
+    const handleClose = () => setClosing(true);
 
     return (
         <header className={`relative flex items-center justify-between gap-4 p-4 md:p-6 ${className}`}>
@@ -59,15 +62,23 @@ const Header = ({ className = '' }) => {
                 <span className="h-0.5 w-7 bg-blanccasse" />
             </button>
 
-            {open && (
-                <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-foreground px-6 pt-4 pb-10 animate-menuIn md:hidden">
+            {(open || closing) && (
+                <div
+                    className={`fixed inset-0 z-50 flex flex-col overflow-y-auto bg-foreground px-6 pt-4 pb-10 md:hidden ${closing ? 'animate-menuOut' : 'animate-menuIn'}`}
+                    onAnimationEnd={(e) => {
+                        if (closing && e.target === e.currentTarget) {
+                            setClosing(false);
+                            setOpen(false);
+                        }
+                    }}
+                >
                     <div className="flex items-center justify-between">
-                        <a href="/" onClick={() => setOpen(false)} className="shrink-0">
+                        <a href="/" onClick={handleClose} className="shrink-0">
                             <img src="/img/logo.webp" alt="Logo The Delambre Bakery" className="size-14" />
                         </a>
                         <button
                             type="button"
-                            onClick={() => setOpen(false)}
+                            onClick={handleClose}
                             aria-label="Fermer le menu"
                             className="flex size-10 items-center justify-center text-3xl leading-none text-blanccasse"
                         >
@@ -80,12 +91,12 @@ const Header = ({ className = '' }) => {
                             {ALL_LINKS.map((link, i) => (
                                 <li
                                     key={link.href}
-                                    className="animate-menuLinkIn opacity-0"
-                                    style={{ animationDelay: `${100 + i * 60}ms` }}
+                                    className={closing ? '' : 'animate-menuLinkIn opacity-0'}
+                                    style={closing ? undefined : { animationDelay: `${100 + i * 60}ms` }}
                                 >
                                     <a
                                         href={link.href}
-                                        onClick={() => setOpen(false)}
+                                        onClick={handleClose}
                                         className="text-3xl font-bold uppercase text-blanccasse transition ease-linear hover:text-rougecerise"
                                     >
                                         {link.label}
@@ -99,8 +110,8 @@ const Header = ({ className = '' }) => {
                         href="https://www.instagram.com/delambrebakery/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-10 animate-menuLinkIn text-sm font-bold uppercase tracking-wide text-blanccasse/70 opacity-0 transition-colors ease-linear hover:text-rougecerise"
-                        style={{ animationDelay: `${100 + ALL_LINKS.length * 60}ms` }}
+                        className={`mt-10 text-sm font-bold uppercase tracking-wide text-blanccasse/70 transition-colors ease-linear hover:text-rougecerise ${closing ? '' : 'animate-menuLinkIn opacity-0'}`}
+                        style={closing ? undefined : { animationDelay: `${100 + ALL_LINKS.length * 60}ms` }}
                     >
                         Instagram
                     </a>

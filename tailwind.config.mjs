@@ -20,6 +20,7 @@ export default {
         curtainUp: 'curtainUp 1s cubic-bezier(0.65,0,0.35,1) 1.4s forwards',
         timerFill: 'timerFill 1.4s ease-in-out forwards',
         menuIn: 'menuIn 0.4s cubic-bezier(0.65,0,0.35,1) forwards',
+        menuOut: 'menuOut 0.35s cubic-bezier(0.65,0,0.35,1) forwards',
         menuLinkIn: 'menuLinkIn 0.4s ease-out forwards',
       },
       keyframes: {
@@ -30,6 +31,10 @@ export default {
         menuIn: {
           '0%': { opacity: 0, transform: 'translateY(-16px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        menuOut: {
+          '0%': { opacity: 1, transform: 'translateY(0)' },
+          '100%': { opacity: 0, transform: 'translateY(-16px)' },
         },
         menuLinkIn: {
           '0%': { opacity: 0, transform: 'translateY(14px)' },
