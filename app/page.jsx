@@ -5,6 +5,7 @@ import HeroScrollSection from "./components/heroScrollSection";
 import ScrollingBanner from "./components/scrollingBanner";
 import RevealHeading from "./components/revealHeading";
 import CookieCard from "./components/cookieCard";
+import CookieCardCarousel from "./components/cookieCardCarousel";
 import MultipleItems from "./components/MultipleItems";
 import Actu from "./components/actu";
 import InstagramFeed from "./components/instagramFeed";
@@ -119,9 +120,12 @@ export default function Home() {
 
         <div className="mt-8">
           <ScrollingBanner text="NEW YORK COOKIES">
-            <CookieCard src="/img/cookie-original.png" alt="Cookie Original" name="Original" />
-            <CookieCard src="/img/Chocolate-Tuxedo.png" alt="Cookie Chocolate Tuxedo" name="Chocolate Tuxedo" />
-            <CookieCard src="/img/REd-Velvet.png" alt="Cookie Red Velvet" name="Red Velvet" />
+            <CookieCardCarousel />
+            <div className="hidden md:flex md:gap-8">
+              <CookieCard src="/img/cookie-original.png" alt="Cookie Original" name="Original" />
+              <CookieCard src="/img/Chocolate-Tuxedo.png" alt="Cookie Chocolate Tuxedo" name="Chocolate Tuxedo" />
+              <CookieCard src="/img/REd-Velvet.png" alt="Cookie Red Velvet" name="Red Velvet" />
+            </div>
           </ScrollingBanner>
         </div>
 
