@@ -19,10 +19,20 @@ export default {
         slide: "slide 10s linear infinite",
         curtainUp: 'curtainUp 1s cubic-bezier(0.65,0,0.35,1) 1.4s forwards',
         timerFill: 'timerFill 1.4s ease-in-out forwards',
+        menuIn: 'menuIn 0.4s cubic-bezier(0.65,0,0.35,1) forwards',
+        menuLinkIn: 'menuLinkIn 0.4s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0, transform: 'translateZ(10px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        menuIn: {
+          '0%': { opacity: 0, transform: 'translateY(-16px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        menuLinkIn: {
+          '0%': { opacity: 0, transform: 'translateY(14px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
         slide: {

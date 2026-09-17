@@ -60,7 +60,7 @@ const Header = ({ className = '' }) => {
             </button>
 
             {open && (
-                <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-foreground px-6 pt-4 pb-10 md:hidden">
+                <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-foreground px-6 pt-4 pb-10 animate-menuIn md:hidden">
                     <div className="flex items-center justify-between">
                         <a href="/" onClick={() => setOpen(false)} className="shrink-0">
                             <img src="/img/logo.webp" alt="Logo The Delambre Bakery" className="size-14" />
@@ -77,8 +77,12 @@ const Header = ({ className = '' }) => {
 
                     <nav className="mt-16 flex-1">
                         <ul className="flex flex-col gap-7">
-                            {ALL_LINKS.map((link) => (
-                                <li key={link.href}>
+                            {ALL_LINKS.map((link, i) => (
+                                <li
+                                    key={link.href}
+                                    className="animate-menuLinkIn opacity-0"
+                                    style={{ animationDelay: `${100 + i * 60}ms` }}
+                                >
                                     <a
                                         href={link.href}
                                         onClick={() => setOpen(false)}
@@ -95,7 +99,8 @@ const Header = ({ className = '' }) => {
                         href="https://www.instagram.com/delambrebakery/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-10 text-sm font-bold uppercase tracking-wide text-blanccasse/70 transition ease-linear hover:text-rougecerise"
+                        className="mt-10 animate-menuLinkIn text-sm font-bold uppercase tracking-wide text-blanccasse/70 opacity-0 transition-colors ease-linear hover:text-rougecerise"
+                        style={{ animationDelay: `${100 + ALL_LINKS.length * 60}ms` }}
                     >
                         Instagram
                     </a>
