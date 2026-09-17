@@ -42,9 +42,9 @@ const Footer = () => {
   return (
     <div
       ref={footerRef}
-      className="fixed inset-x-0 bottom-0 z-0 flex min-h-screen flex-col bg-foreground text-blanccasse"
+      className="fixed inset-x-0 bottom-0 z-0 flex max-h-screen min-h-screen flex-col overflow-y-auto bg-foreground text-blanccasse"
     >
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-4 md:px-10">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-8 md:grid-cols-4 md:gap-12 md:px-10 md:py-16">
         <div>
           <img src="/img/logo.webp" alt="Logo The Delambre Bakery" className="size-16" />
           <p className="mt-4 text-sm uppercase tracking-wide text-blanccasse/70">Lille</p>
@@ -101,11 +101,11 @@ const Footer = () => {
       </div>
 
       <div className="mt-auto">
-        <h2 className="select-none overflow-hidden px-4 text-center font-bold uppercase leading-[0.9] text-blanccasse text-[10vw] sm:text-[9vw] sm:leading-none sm:whitespace-nowrap md:text-[6.5vw]">
+        <h2 className="select-none overflow-hidden whitespace-nowrap px-4 text-center font-bold uppercase leading-none text-blanccasse text-2xl sm:text-4xl md:text-[6.5vw]">
           The Delambre Bakery
         </h2>
 
-        <div className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-4 border-t border-blanccasse/20 px-6 py-6 text-sm text-blanccasse/70 sm:flex-row sm:justify-between md:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-4 border-t border-blanccasse/20 px-6 py-4 text-sm text-blanccasse/70 sm:flex-row sm:justify-between md:px-10 md:py-6">
           <p>© {new Date().getFullYear()} The Delambre Bakery.</p>
           <div className="flex gap-6">
             <a href="/mentions-legales" className="transition ease-linear hover:text-rougecerise">
