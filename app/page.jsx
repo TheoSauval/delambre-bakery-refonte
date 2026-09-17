@@ -129,8 +129,11 @@ export default function Home() {
           </ScrollingBanner>
         </div>
 
+        <h2 className="mt-40 px-6 text-center text-4xl font-bold uppercase leading-tight md:hidden">
+          Le goût de New York, <span className="text-rougecerise">dans chaque bouchée.</span>
+        </h2>
         <RevealHeading
-          className="mt-40 px-6 text-center text-4xl md:text-6xl font-bold uppercase leading-tight"
+          className="mt-40 hidden px-6 text-center text-6xl font-bold uppercase leading-tight md:block"
           segments={[
             { text: "Le goût de New York, " },
             { text: "dans chaque bouchée.", className: "text-rougecerise" },
