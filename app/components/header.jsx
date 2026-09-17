@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const linkClass = 'text-sm md:text-lg font-bold text-blanccasse hover:text-rougecerise transition ease-linear';
-const mobileLinkClass = 'text-2xl font-bold text-blanccasse hover:text-rougecerise transition ease-linear';
 
 const LEFT_LINKS = [
     { href: '/nos-cookies', label: 'NOS COOKIES' },
@@ -17,8 +16,15 @@ const RIGHT_LINKS = [
     { href: '/contact', label: 'CONTACT' },
 ];
 
+const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];
+
 const Header = ({ className = '' }) => {
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        document.body.style.overflow = open ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [open]);
 
     return (
         <header className={`relative flex items-center justify-between gap-4 p-4 md:p-6 ${className}`}>
@@ -44,28 +50,56 @@ const Header = ({ className = '' }) => {
 
             <button
                 type="button"
-                onClick={() => setOpen((v) => !v)}
-                aria-expanded={open}
-                aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+                onClick={() => setOpen(true)}
+                aria-label="Ouvrir le menu"
                 className="flex size-10 flex-1 flex-col items-end justify-center gap-1.5 md:hidden"
             >
-                <span className={`h-0.5 w-7 bg-blanccasse transition-transform duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`} />
-                <span className={`h-0.5 w-7 bg-blanccasse transition-opacity duration-300 ${open ? 'opacity-0' : ''}`} />
-                <span className={`h-0.5 w-7 bg-blanccasse transition-transform duration-300 ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+                <span className="h-0.5 w-7 bg-blanccasse" />
+                <span className="h-0.5 w-7 bg-blanccasse" />
+                <span className="h-0.5 w-7 bg-blanccasse" />
             </button>
 
             {open && (
-                <nav className="absolute left-0 top-full w-full bg-foreground p-8 md:hidden">
-                    <ul className="flex flex-col items-center gap-6">
-                        {[...LEFT_LINKS, ...RIGHT_LINKS].map((link) => (
-                            <li key={link.href}>
-                                <a href={link.href} className={mobileLinkClass} onClick={() => setOpen(false)}>
-                                    {link.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
+                <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-foreground px-6 pt-4 pb-10 md:hidden">
+                    <div className="flex items-center justify-between">
+                        <a href="/" onClick={() => setOpen(false)} className="shrink-0">
+                            <img src="/img/logo.webp" alt="Logo The Delambre Bakery" className="size-14" />
+                        </a>
+                        <button
+                            type="button"
+                            onClick={() => setOpen(false)}
+                            aria-label="Fermer le menu"
+                            className="flex size-10 items-center justify-center text-3xl leading-none text-blanccasse"
+                        >
+                            &times;
+                        </button>
+                    </div>
+
+                    <nav className="mt-16 flex-1">
+                        <ul className="flex flex-col gap-7">
+                            {ALL_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <a
+                                        href={link.href}
+                                        onClick={() => setOpen(false)}
+                                        className="text-3xl font-bold uppercase text-blanccasse transition ease-linear hover:text-rougecerise"
+                                    >
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    <a
+                        href="https://www.instagram.com/delambrebakery/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-10 text-sm font-bold uppercase tracking-wide text-blanccasse/70 transition ease-linear hover:text-rougecerise"
+                    >
+                        Instagram
+                    </a>
+                </div>
             )}
         </header>
     );
