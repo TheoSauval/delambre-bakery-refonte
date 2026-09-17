@@ -60,13 +60,13 @@ export default function Home() {
         </div>
       </HeroScrollSection>
       <main className="bg-blanccasse">
-        <div className="group relative flex justify-around items-center pt-24">
+        <div className="group relative flex flex-col items-center gap-8 px-6 pt-24 md:flex-row md:justify-around md:gap-4 md:px-0">
           <img
             src="/img/Lille.jpg"
             alt="Cinthia et Benjamin, fondateurs de The Delambre Bakery"
-            className="w-[36rem] h-auto object-contain"
+            className="w-full max-w-md h-auto object-contain md:w-[36rem]"
           />
-          <div className="w-1/3">
+          <div className="w-full md:w-1/3">
             <h3 className="text-2xl text-rougecerise">The Delambre Bakery</h3>
             <p className="text-lg">
               Homemade New York Style Cookies
@@ -135,9 +135,9 @@ export default function Home() {
 
         <InstagramFeed />
 
-        <div className="mt-40 pl-20">
+        <div className="mt-40 px-6 md:pl-20 md:pr-0">
           <h2 className="text-4xl text-rougecerise">Nos Cookies</h2>
-          <div className="pr-10">
+          <div className="md:pr-10">
           <MultipleItems />
           <Actu />
           <Adresse />
