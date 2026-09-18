@@ -11,9 +11,16 @@ export default function FooterReveal({ children }) {
     const content = contentRef.current;
     if (!content) return;
 
+    const mql = window.matchMedia("(min-width: 640px)");
     let ticking = false;
 
     const update = () => {
+      if (!mql.matches) {
+        content.style.borderBottomLeftRadius = "0px";
+        content.style.borderBottomRightRadius = "0px";
+        ticking = false;
+        return;
+      }
       const rect = content.getBoundingClientRect();
       const vh = window.innerHeight;
       const progress = Math.min(Math.max((vh - rect.bottom) / (vh * 0.6), 0), 1);
@@ -33,9 +40,11 @@ export default function FooterReveal({ children }) {
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    mql.addEventListener("change", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      mql.removeEventListener("change", onScroll);
     };
   }, []);
 
