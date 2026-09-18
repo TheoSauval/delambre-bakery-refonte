@@ -11,16 +11,9 @@ export default function FooterReveal({ children }) {
     const content = contentRef.current;
     if (!content) return;
 
-    const mql = window.matchMedia("(min-width: 640px)");
     let ticking = false;
 
     const update = () => {
-      if (!mql.matches) {
-        content.style.borderBottomLeftRadius = "";
-        content.style.borderBottomRightRadius = "";
-        ticking = false;
-        return;
-      }
       const rect = content.getBoundingClientRect();
       const vh = window.innerHeight;
       const progress = Math.min(Math.max((vh - rect.bottom) / (vh * 0.6), 0), 1);
@@ -40,11 +33,9 @@ export default function FooterReveal({ children }) {
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    mql.addEventListener("change", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      mql.removeEventListener("change", onScroll);
     };
   }, []);
 
@@ -53,10 +44,10 @@ export default function FooterReveal({ children }) {
       <div ref={contentRef} className="relative z-10 overflow-hidden bg-blanccasse pointer-events-auto">
         {children}
       </div>
-      {/* transparent spacer: reserves room for the fixed footer reveal from sm up.
-          On mobile the footer sits in normal flow right after this, no reveal, no spacer. */}
+      {/* transparent spacer: at least the footer's height (so it sits flush beneath) and at least
+          one viewport tall (so the page content is always fully cleared before the footer shows) */}
       <div
-        className="hidden pointer-events-none sm:block"
+        className="pointer-events-none"
         style={{ height: "max(var(--footer-height, 100vh), 100vh)" }}
         aria-hidden="true"
       />
