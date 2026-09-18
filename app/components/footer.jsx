@@ -42,7 +42,7 @@ const Footer = () => {
   return (
     <div
       ref={footerRef}
-      className="fixed inset-x-0 bottom-0 z-0 flex max-h-screen min-h-screen flex-col overflow-y-auto bg-foreground text-blanccasse"
+      className="static -z-10 flex flex-col bg-foreground text-blanccasse sm:fixed sm:inset-x-0 sm:bottom-0 sm:max-h-screen sm:min-h-screen sm:overflow-y-auto"
     >
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-8 md:grid-cols-4 md:gap-12 md:px-10 md:py-16">
         <div>

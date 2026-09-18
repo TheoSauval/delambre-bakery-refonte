@@ -53,10 +53,10 @@ export default function FooterReveal({ children }) {
       <div ref={contentRef} className="relative z-10 overflow-hidden bg-blanccasse pointer-events-auto">
         {children}
       </div>
-      {/* transparent spacer: at least the footer's height (so it sits flush beneath) and at least
-          one viewport tall (so the page content is always fully cleared before the footer shows) */}
+      {/* transparent spacer: reserves room for the fixed footer reveal from sm up.
+          On mobile the footer sits in normal flow right after this, no reveal, no spacer needed. */}
       <div
-        className="pointer-events-none"
+        className="hidden pointer-events-none sm:block"
         style={{ height: "max(var(--footer-height, 100vh), 100vh)" }}
         aria-hidden="true"
       />
