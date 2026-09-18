@@ -35,11 +35,11 @@ export default function RootLayout({ children }) {
         >
           <div className="absolute bottom-0 left-0 h-2 w-full origin-left scale-x-0 animate-timerFill bg-blanccasse" />
         </div>
-        <Footer />
         <SmoothScroller />
         <div id="smooth-wrapper" className="pointer-events-none">
           <div id="smooth-content" className="pointer-events-none">{children}</div>
         </div>
+        <Footer />
       </body>
     </html>
   );
