@@ -9,10 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        blanccasse: 'var(--blanccasse)',
-        rougecerise: 'var(--rougecerise)',
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        blanccasse: "rgb(var(--blanccasse) / <alpha-value>)",
+        rougecerise: "rgb(var(--rougecerise) / <alpha-value>)",
       },
       animation: {
         fadeIn: 'fadeIn 2.5s ease-in-out',

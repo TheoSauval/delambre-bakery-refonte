@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #D9A066;
-  --foreground: #4E342E;
-  --blanccasse: #FAF3E0;
-  --rougecerise: #D84315;
+  --background: 217 160 102;
+  --foreground: 78 52 46;
+  --blanccasse: 250 243 224;
+  --rougecerise: 216 67 21;
 }
 
 @font-face {
@@ -21,8 +21,8 @@ html, body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--blanccasse);
+  color: rgb(var(--foreground));
+  background: rgb(var(--blanccasse));
   font-family: 'SaoTorpes', sans-serif;
 }
 
@@ -41,7 +41,7 @@ body {
 
 .text-outline-rougecerise {
   color: transparent;
-  -webkit-text-stroke: 2px var(--rougecerise);
+  -webkit-text-stroke: 2px rgb(var(--rougecerise));
 }
 
 .scrollbar-hide {

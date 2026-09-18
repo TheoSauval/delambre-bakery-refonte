@@ -101,7 +101,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-auto">
-        <h2 className="select-none overflow-hidden whitespace-nowrap px-4 text-center font-bold uppercase leading-none text-blanccasse text-2xl sm:text-4xl md:text-[6.5vw]">
+        <h2 className="select-none overflow-hidden whitespace-nowrap px-4 text-center font-bold uppercase leading-none text-blanccasse text-[1.5rem] sm:text-[2.25rem] md:px-10 md:text-[5.5vw]">
           The Delambre Bakery
         </h2>
 
